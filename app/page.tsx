@@ -11,23 +11,26 @@ import {
   Code,
   ExternalLink,
   Github,
-  Linkedin,
   Mail,
   Palette,
   Smartphone,
 } from "lucide-react";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Home() {
   const skills = [
     "React.js",
     "Next.js",
     "TypeScript",
-    "JavaScript",
-    "HTML5",
-    "CSS3",
     "Tailwind CSS",
-    "Node.js",
     "Git",
     "Figma",
     "Responsive Design",
@@ -70,45 +73,53 @@ export default function Home() {
       <nav className="fixed top-0 w-full bg-cream/90 backdrop-blur-sm border-b border-dark-gray/10 z-50">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center py-4">
-            <div className="text-xl font-bold text-main-blue">Minami</div>
             <div className="hidden md:flex space-x-8">
-              <a
+              <Link
                 href="#about"
                 className="hover:text-main-blue transition-colors"
               >
                 About
-              </a>
-              <a
+              </Link>
+              <Link
                 href="#skills"
                 className="hover:text-main-blue transition-colors"
               >
                 Skills
-              </a>
-              <a
+              </Link>
+              <Link
                 href="#projects"
                 className="hover:text-main-blue transition-colors"
               >
                 Projects
-              </a>
-              <a
+              </Link>
+              <Link
                 href="#contact"
                 className="hover:text-main-blue transition-colors"
               >
                 Contact
-              </a>
+              </Link>
             </div>
+            <Select>
+              <SelectTrigger className="w-[180px]">
+                <SelectValue placeholder="Language" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="light">日本語</SelectItem>
+                <SelectItem value="dark">English</SelectItem>
+              </SelectContent>
+            </Select>
           </div>
         </div>
       </nav>
       {/* Hero Section */}
-      <section className="pt-24 pb-16 px-4 sm:px-6 lg:px-8">
+      <section className="pt-24 pb-16 px-4 sm:px-6 lg:px-8 bg-main-white">
         <div className="max-w-6xl mx-auto">
           <div className="text-center">
             <div className="w-32 h-32 bg-gradient-to-br from-main-blue to-accent-pink rounded-full mx-auto mb-8 flex items-center justify-center">
               <span className="text-4xl font-bold text-white">M</span>
             </div>
             <h1 className="text-4xl md:text-6xl font-bold mb-4">
-              Hi, I'm <span className="text-main-blue">Minami</span>
+              Hi, I’m <span className="text-main-blue">Minami</span>
             </h1>
             <p className="text-xl md:text-2xl mb-8 text-dark-gray/80">
               Frontend Developer passionate about creating beautiful, functional
@@ -139,13 +150,13 @@ export default function Home() {
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
               <p className="text-lg mb-6 leading-relaxed">
-                I'm a passionate frontend developer with a keen eye for design
+                I’m a passionate frontend developer with a keen eye for design
                 and a love for creating seamless user experiences. With
                 expertise in modern web technologies, I transform ideas into
                 interactive, responsive, and accessible web applications.
               </p>
               <p className="text-lg mb-6 leading-relaxed">
-                When I'm not coding, you can find me exploring new design
+                When I’m not coding, you can find me exploring new design
                 trends, contributing to open-source projects, or learning about
                 the latest developments in web technology.
               </p>
@@ -155,7 +166,7 @@ export default function Home() {
                   <span>Clean Code</span>
                 </div>
                 <div className="flex items-center space-x-2">
-                  <Palette className="w-5 h-5 text-accent-pink" />
+                  <Palette className="w-5 h-5 text-main-pink" />
                   <span>UI/UX Design</span>
                 </div>
                 <div className="flex items-center space-x-2">
@@ -172,7 +183,10 @@ export default function Home() {
       </section>
 
       {/* Skills Section */}
-      <section id="skills" className="py-16 px-4 sm:px-6 lg:px-8">
+      <section
+        id="skills"
+        className="py-16 px-4 sm:px-6 lg:px-8  bg-main-white"
+      >
         <div className="max-w-4xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
             Skills & Technologies
@@ -182,7 +196,7 @@ export default function Home() {
               <Badge
                 key={index}
                 variant="secondary"
-                className="px-4 py-2 text-sm bg-main-blue/10 bg-amber-600 hover:bg-main-blue hover:text-white transition-colors"
+                className="px-4 py-2 text-sm bg-sky-100 text-main-blue hover:bg-main-blue hover:text-white transition-colors"
               >
                 {skill}
               </Badge>
@@ -242,7 +256,7 @@ export default function Home() {
                     </Button>
                     <Button
                       size="sm"
-                      className="flex-1 bg-accent-pink hover:bg-accent-pink/90 text-white"
+                      className="flex-1 bg-main-pink hover:bg-pink-100 text-white"
                     >
                       <ExternalLink className="w-4 h-4 mr-1" />
                       Live
@@ -256,30 +270,27 @@ export default function Home() {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="py-16 px-4 sm:px-6 lg:px-8">
+      <section
+        id="contact"
+        className="py-16 px-4 sm:px-6 lg:px-8  bg-main-white"
+      >
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-8">
-            Let's Work Together
+            Let’s Work Together
           </h2>
           <p className="text-lg mb-8 text-dark-gray/80">
-            I'm always interested in new opportunities and exciting projects.
-            Let's connect and create something amazing together!
+            I’m always interested in new opportunities and exciting projects.
+            Let’s connect and create something amazing together!
           </p>
           <div className="flex justify-center space-x-6">
-            <Button className="bg-main-blue hover:bg-main-blue/90 text-white">
+            <Button className="bg-main-blue hover:bg-sky-100 text-white">
               <Mail className="w-5 h-5 mr-2" />
               Email Me
             </Button>
+
             <Button
               variant="outline"
-              className="border-main-blue text-main-blue hover:bg-main-blue hover:text-white bg-transparent"
-            >
-              <Linkedin className="w-5 h-5 mr-2" />
-              LinkedIn
-            </Button>
-            <Button
-              variant="outline"
-              className="border-accent-pink text-accent-pink hover:bg-accent-pink hover:text-white bg-transparent"
+              className="border-main-pink text-main-pink hover:bg-main-pink hover:text-white bg-transparent"
             >
               <Github className="w-5 h-5 mr-2" />
               GitHub
@@ -289,7 +300,7 @@ export default function Home() {
       </section>
 
       {/* Footer */}
-      <footer className="py-8 px-4 sm:px-6 lg:px-8 border-t border-dark-gray/10">
+      <footer className="py-8 px-4 sm:px-6 lg:px-8 border-t border-dark-gray/10 bg-main-white">
         <div className="max-w-6xl mx-auto text-center">
           <p className="text-dark-gray/60">
             © 2024 Minami. Built with Next.js and TypeScript.

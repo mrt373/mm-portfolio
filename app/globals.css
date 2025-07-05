@@ -12,16 +12,24 @@
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
+  --color-text: var(--background);
+  --color-bg: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --color-main-blue: var(--main-blue);
+  --color-main-white: var(--main-white);
+  --color-main-black: var(--main-black);
+  --color-main-pink: var(--main-pink);
+  --color-dk-blue: var(--dk-blue);
+  --color-dk-white: var(--dk-white);
+  --color-dk-black: var(--dk-black);
+  --color-dk-pink: var(--dk-pink);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #1c1c1c;
-    --foreground: #ededed;
+    --background: var(--dk-black);
+    --foreground: var(--dk-white);
   }
 }
 
