@@ -9,13 +9,11 @@ import {
 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-// import { Select } from "@headlessui/react";
 import { Badge, Button, Card, Text } from "@mantine/core";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
 
 // 変更後
-type Props = {
-  children: React.ReactNode;
+export type Props = {
   params: Promise<{
     lang: string;
   }>;
