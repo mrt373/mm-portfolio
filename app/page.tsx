@@ -1,13 +1,16 @@
 import {
   Code,
   ExternalLink,
-  Github,
+  GitGraph,
+  Globe,
   Mail,
   Palette,
   Smartphone,
 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+// import { Select } from "@headlessui/react";
+import { Badge, Button, Card, Select, Text } from "@mantine/core";
 
 export default function Home() {
   const skills = [
@@ -50,11 +53,12 @@ export default function Home() {
       live: "#",
     },
   ];
+  const earth = <Globe className="w-4 h-4 mt-0.5 " />;
 
   return (
-    <div className="min-h-screen bg-white text-black">
+    <div className="min-h-screen bg-main-white text-main-black">
       {/* Navigation */}
-      <nav className="fixed top-0 w-full bg-cream/90 backdrop-blur-sm border-b border-dark-gray/10 z-50">
+      <nav className="fixed top-0 w-full bg-cream/90 backdrop-blur-sm border-b border-dark-gray/10 z-10">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center py-4">
             <div className="hidden md:flex space-x-8">
@@ -83,15 +87,14 @@ export default function Home() {
                 Contact
               </Link>
             </div>
-            <Select>
-              <SelectTrigger className="w-[180px]">
-                <SelectValue placeholder="Language" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="light">日本語</SelectItem>
-                <SelectItem value="dark">English</SelectItem>
-              </SelectContent>
-            </Select>
+            <Select
+              size="md"
+              variant="unstyled"
+              leftSection={earth}
+              placeholder="Language"
+              data={["English", "日本語"]}
+              comboboxProps={{ shadow: "md" }}
+            />
           </div>
         </div>
       </nav>
@@ -100,17 +103,24 @@ export default function Home() {
         <div className="max-w-6xl mx-auto">
           <div className="text-center">
             <div className="w-32 h-32 bg-gradient-to-br from-main-blue to-accent-pink rounded-full mx-auto mb-8 flex items-center justify-center">
-              <span className="text-4xl font-bold text-white">M</span>
+              <Image
+                src="/first_image.png"
+                width={128}
+                height={128}
+                priority={true}
+                // placeholder="blur"
+                alt="first view"
+              />
             </div>
             <h1 className="text-4xl md:text-6xl font-bold mb-4">
               Hi, I’m <span className="text-main-blue">Minami</span>
             </h1>
             <p className="text-xl md:text-2xl mb-8 text-dark-gray/80">
-              Frontend Developer passionate about creating beautiful, functional
-              web experiences
+              It is the way of the world that hearts are fickle.
             </p>
+
             <div className="flex justify-center space-x-4">
-              <Button className="bg-main-blue hover:bg-main-blue/90 text-white">
+              <Button variant="filled" color="#51a8dd">
                 <Mail className="w-4 h-4 mr-2" />
                 Get In Touch
               </Button>
@@ -118,7 +128,7 @@ export default function Home() {
                 variant="outline"
                 className="border-main-blue text-main-blue hover:bg-main-blue hover:text-white bg-transparent"
               >
-                <Github className="w-4 h-4 mr-2" />
+                <GitGraph className="w-4 h-4 mr-2" />
                 View GitHub
               </Button>
             </div>
@@ -133,16 +143,14 @@ export default function Home() {
           </h2>
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
-              <p className="text-lg mb-6 leading-relaxed">
-                I’m a passionate frontend developer with a keen eye for design
-                and a love for creating seamless user experiences. With
-                expertise in modern web technologies, I transform ideas into
-                interactive, responsive, and accessible web applications.
+              <p className="text-md mb-6 leading-relaxed">
+                私はフロントエンドエンジニアです。
+                営業事務ーWebデザイナーースマホアプリ開発の経験があります
               </p>
-              <p className="text-lg mb-6 leading-relaxed">
-                When I’m not coding, you can find me exploring new design
-                trends, contributing to open-source projects, or learning about
-                the latest developments in web technology.
+              <p className="text-md mb-6 leading-relaxed">
+                興味があることはなんでも挑戦することがモットーです
+                旅行とピラティスとショッピングが好きです。
+                ピラティスインストラクターの資格が取りたいです
               </p>
               <div className="flex space-x-4">
                 <div className="flex items-center space-x-2">
@@ -179,8 +187,10 @@ export default function Home() {
             {skills.map((skill, index) => (
               <Badge
                 key={index}
-                variant="secondary"
-                className="px-4 py-2 text-sm bg-sky-100 text-main-blue hover:bg-main-blue hover:text-white transition-colors"
+                size="xl"
+                variant="light"
+                color="#51a8dd"
+                radius="sm"
               >
                 {skill}
               </Badge>
@@ -201,7 +211,7 @@ export default function Home() {
                 key={index}
                 className="group hover:shadow-lg transition-shadow duration-300 border-0 bg-white"
               >
-                <div className="relative overflow-hidden rounded-t-lg">
+                <Card className="relative overflow-hidden rounded-t-lg">
                   <Image
                     width={200}
                     height={200}
@@ -210,43 +220,33 @@ export default function Home() {
                     className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                </div>
-                <CardHeader>
-                  <CardTitle className="text-xl">{project.title}</CardTitle>
-                  <CardDescription className="text-dark-gray/70">
-                    {project.description}
-                  </CardDescription>
-                </CardHeader>
-                <CardContent>
+                </Card>
+                <Text>{project.title}</Text>
+                <Text>{project.description}</Text>
+                <Card>
                   <div className="flex flex-wrap gap-2 mb-4">
                     {project.tech.map((tech, techIndex) => (
                       <Badge
                         key={techIndex}
-                        variant="outline"
-                        className="text-xs border-main-blue/30 text-main-blue"
+                        variant="light"
+                        color="#51a8dd"
+                        radius="md"
                       >
                         {tech}
                       </Badge>
                     ))}
                   </div>
                   <div className="flex space-x-2">
-                    <Button
-                      size="sm"
-                      variant="outline"
-                      className="flex-1 border-main-blue text-main-blue hover:bg-main-blue hover:text-white bg-transparent"
-                    >
-                      <Github className="w-4 h-4 mr-1" />
+                    <Button variant="outline" color="#51a8dd">
+                      <GitGraph className="w-4 h-4 mr-1" />
                       Code
                     </Button>
-                    <Button
-                      size="sm"
-                      className="flex-1 bg-main-pink hover:bg-pink-100 text-white"
-                    >
+                    <Button variant="filled" color="#e03c8a">
                       <ExternalLink className="w-4 h-4 mr-1" />
                       Live
                     </Button>
                   </div>
-                </CardContent>
+                </Card>
               </Card>
             ))}
           </div>
@@ -276,7 +276,7 @@ export default function Home() {
               variant="outline"
               className="border-main-pink text-main-pink hover:bg-main-pink hover:text-white bg-transparent"
             >
-              <Github className="w-5 h-5 mr-2" />
+              <GitGraph className="w-5 h-5 mr-2" />
               GitHub
             </Button>
           </div>
