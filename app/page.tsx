@@ -7,7 +7,6 @@ import {
   Palette,
   Smartphone,
 } from "lucide-react";
-
 import Image from "next/image";
 import Link from "next/link";
 // import { Select } from "@headlessui/react";
@@ -153,7 +152,6 @@ export default function Home() {
                 旅行とピラティスとショッピングが好きです。
                 ピラティスインストラクターの資格が取りたいです
               </p>
-              <div className="underline text-right mb-6 ">Read More →</div>
               <div className="flex space-x-4">
                 <div className="flex items-center space-x-2">
                   <Code className="w-5 h-5 text-main-blue" />

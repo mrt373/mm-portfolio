@@ -1,0 +1,16 @@
+{
+  "introduce": {
+    "catch": "It is the way of the world that hearts are fickle."
+  },
+  "contact": {
+    "email": "Get In touch",
+    "github": "View GitHub",
+    "message": " I’m always interested in new opportunities and exciting projects.",
+    "letWorkTogether": "Let’s connect and create something amazing together!"
+  },
+  "about": {
+    "me": "I am a front-end engineer.",
+    "experience": "I have experience in sales administration, web design, and smartphone app development.",
+    "hobbies": "I love traveling and shopping. Recently, I have been into Pilates."
+  }
+}
