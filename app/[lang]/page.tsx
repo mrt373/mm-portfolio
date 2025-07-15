@@ -13,8 +13,16 @@ import Link from "next/link";
 import { Badge, Button, Card, Text } from "@mantine/core";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
 
-export default async function Home({ params }: { params: { lang: string } }) {
-  const lang = params.lang;
+// 変更後
+type Props = {
+  children: React.ReactNode;
+  params: Promise<{
+    lang: string;
+  }>;
+};
+
+export default async function Home({ params }: Props) {
+  const lang = (await params).lang;
   const { t } = await getTranslation(lang);
   const skills = [
     "React.js",
